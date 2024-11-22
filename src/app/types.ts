@@ -23,3 +23,12 @@ export interface Tag {
     name: string;
     slug: string;
 }
+
+export interface PostsFilter {
+    search: string;
+}
+
+export enum SortOrder {
+    desc = 'desc',
+    asc = 'asc',
+}
