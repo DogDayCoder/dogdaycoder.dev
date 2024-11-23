@@ -2,52 +2,29 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 // import type { PayloadAction } from '@reduxjs/toolkit';
 import { fetchPosts } from '../postsAPI';
 import { Post } from '../../../app/types.ts';
+import { RootState } from '../../../app/store.ts';
 
 export interface PostsState {
-    posts: Post[];
+    posts: Post[] | undefined;
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
-    error?: string | null;
+    error?: string | undefined;
 }
 
 const initialState: PostsState = {
     posts: [],
     status: 'idle',
-    error: null,
+    error: undefined,
 };
 
 export const fetchPostsAsync = createAsyncThunk(
     'posts/fetchPosts',
-    async () => {
-        const response = await fetchPosts();
-        return response.data;
-    },
+    async () => (await fetchPosts()) as Post[],
 );
-
-// export const createPostAsync = createAsyncThunk(
-//     'posts/createPost',
-//     async (newPost) => {
-//         const response = await createPost(newPost);
-//         return response.data;
-//     },
-// );
 
 export const postsSlice = createSlice({
     name: 'posts',
     initialState,
-    reducers: {
-        // fetchPosts: (state) => {
-        //     state.status = 'loading';
-        // },
-        // createPost: (state, action: PayloadAction<number>) => {
-        //     state.status = 'loading';
-        // },
-        // updatePost: (state) => {
-        //     state.status = 'loading';
-        // },
-        // deletePost: (state) => {
-        //     state.status = 'loading';
-        // },
-    },
+    reducers: {},
     extraReducers(builder) {
         builder
             .addCase(fetchPostsAsync.pending, (state) => {
@@ -64,7 +41,6 @@ export const postsSlice = createSlice({
     },
 });
 
-// Action creators are generated for each case reducer function
-// export const {} = postsSlice.actions;
+export const selectAllPosts = (state: RootState) => state.posts.posts;
 
 export default postsSlice.reducer;

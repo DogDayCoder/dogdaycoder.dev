@@ -3,12 +3,12 @@ export interface Post {
     title: string;
     slug: string;
     content: string;
+    excerpt: string;
+    featuredImage?: string;
     publishedAt: Date;
     updatedAt?: Date;
-    // categoryIds?: Category[];
-    // tagIds?: Tag[];
-    // featuredImage?: string;
-    excerpt: string;
+    categoryIds?: Category[];
+    tagIds?: Tag[];
 }
 
 export interface Category {
