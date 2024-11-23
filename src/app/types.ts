@@ -5,9 +5,9 @@ export interface Post {
     content: string;
     publishedAt: Date;
     updatedAt?: Date;
-    categoryIds?: Category[];
-    tagIds?: Tag[];
-    featuredImage?: string;
+    // categoryIds?: Category[];
+    // tagIds?: Tag[];
+    // featuredImage?: string;
     excerpt: string;
 }
 
