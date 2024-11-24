@@ -37,7 +37,7 @@ export const Home = () => {
 
     return (
         <div>
-            <h1>DogDayCoder - Blog</h1>
+            <h1>DogDayCoder | work-in-progress</h1>
 
             <NavigationPane />
 
