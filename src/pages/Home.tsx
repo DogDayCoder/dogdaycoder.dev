@@ -6,6 +6,7 @@ import {
 } from '../features/posts/slice/postsSlice.ts';
 import { AppDispatch, RootState } from '../app/store.ts';
 import { NavigationPane } from '../shared/components/navigationPane/NavigationPane.tsx';
+import { PostArticle } from '../features/posts/components/PostArticle.tsx';
 
 export const Home = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -25,10 +26,7 @@ export const Home = () => {
             content = <div>Loading...</div>;
         } else if (postStatus === 'succeeded') {
             content = posts?.map((post) => (
-                <article key={post.id}>
-                    <h2>{post.title}</h2>
-                    <p>{post.content}</p>
-                </article>
+                <PostArticle key={post.id} article={post} />
             ));
         } else if (postStatus === 'failed') {
             content = <div>{error}</div>;
@@ -42,7 +40,7 @@ export const Home = () => {
             <h1>DogDayCoder - Blog</h1>
 
             <NavigationPane />
-            
+
             <div>{renderPosts()}</div>
         </div>
     );
