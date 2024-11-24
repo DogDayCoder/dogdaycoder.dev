@@ -1,6 +1,6 @@
 import '@mantine/core/styles.css';
 import './App.css';
-import { Home } from './pages/Home.tsx';
+import { Home } from './pages/home/Home.tsx';
 
 import { MantineProvider } from '@mantine/core';
 

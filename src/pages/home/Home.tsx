@@ -2,11 +2,12 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
     fetchPostsAsync,
-    selectAllPosts,
-} from '../features/posts/slice/postsSlice.ts';
-import { AppDispatch, RootState } from '../app/store.ts';
-import { NavigationPane } from '../shared/components/navigationPane/NavigationPane.tsx';
-import { PostArticle } from '../features/posts/components/PostArticle.tsx';
+    selectAllPosts
+} from '../../features/posts/slice/postsSlice.ts';
+import { AppDispatch, RootState } from '../../app/store.ts';
+import { NavigationPane } from '../../shared/components/navigationPane/NavigationPane.tsx';
+import { PostArticle } from '../../features/posts/components/PostArticle.tsx';
+import classes from './Home.module.css';
 
 export const Home = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -39,9 +40,11 @@ export const Home = () => {
         <div>
             <h1>DogDayCoder | work-in-progress</h1>
 
-            <NavigationPane />
+            <div className={classes.container}>
+                <NavigationPane className={classes.navigation} />
 
-            <div>{renderPosts()}</div>
+                <div className={classes.posts}>{renderPosts()}</div>
+            </div>
         </div>
     );
 };

@@ -11,7 +11,12 @@ const links = [
     { label: 'Contact', link: '#contact', order: 1 },
 ];
 
-export const NavigationPane = () => {
+export interface NavigationPaneProps {
+    className?: string;
+}
+
+export const NavigationPane = (props: NavigationPaneProps) => {
+    const { className } = props;
     const [active, setActive] = useState(2);
 
     const renderItems = () =>
@@ -36,15 +41,17 @@ export const NavigationPane = () => {
         ));
 
     return (
-        <div className={classes.root}>
-            <div className={classes.links}>
-                <div
-                    className={classes.indicator}
-                    style={{
-                        transform: `translateY(calc(${active} * var(--link-height) + var(--indicator-offset)))`,
-                    }}
-                />
-                {renderItems()}
+        <div className={className}>
+            <div className={classes.root}>
+                <div className={classes.links}>
+                    <div
+                        className={classes.indicator}
+                        style={{
+                            transform: `translateY(calc(${active} * var(--link-height) + var(--indicator-offset)))`,
+                        }}
+                    />
+                    {renderItems()}
+                </div>
             </div>
         </div>
     );
