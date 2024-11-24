@@ -1,12 +1,13 @@
+import '@mantine/core/styles.css';
 import './App.css';
-import Blog from './pages/Blog.tsx';
+import { Home } from './pages/Home.tsx';
 
-const App = () => {
+import { MantineProvider } from '@mantine/core';
+
+export const App = () => {
     return (
-        <>
-            <Blog />
-        </>
+        <MantineProvider>
+            <Home />
+        </MantineProvider>
     );
 };
-
-export default App;
