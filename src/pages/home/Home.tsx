@@ -2,12 +2,13 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
     fetchPostsAsync,
-    selectAllPosts
+    selectAllPosts,
 } from '../../features/posts/slice/postsSlice.ts';
 import { AppDispatch, RootState } from '../../app/store.ts';
 import { NavigationPane } from '../../shared/components/navigationPane/NavigationPane.tsx';
 import { PostList } from '../../features/posts/components/PostList.tsx';
 import classes from './Home.module.css';
+import { Footer } from '../../shared/components/footer/Footer.tsx';
 
 export const Home = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -50,6 +51,8 @@ export const Home = () => {
 
                 <div className={classes.posts}>{renderPosts()}</div>
             </div>
+
+            <Footer />
         </>
     );
 };
