@@ -7,8 +7,9 @@ import {
 import { AppDispatch, RootState } from '../../app/store.ts';
 import { NavigationPane } from '../../shared/components/navigationPane/NavigationPane.tsx';
 import { PostList } from '../../features/posts/components/PostList.tsx';
-import classes from './Home.module.css';
 import { Footer } from '../../shared/components/footer/Footer.tsx';
+import classes from './Home.module.css';
+import { Header } from '../../shared/components/header/Header.tsx';
 
 export const Home = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -34,7 +35,6 @@ export const Home = () => {
             case 'failed':
                 content = <>{error}</>;
                 break;
-            case 'idle':
             default:
                 break;
         }
@@ -44,11 +44,10 @@ export const Home = () => {
 
     return (
         <>
-            <h1>DogDayCoder | work-in-progress</h1>
+            <Header />
 
             <div className={classes.container}>
                 <NavigationPane className={classes.navigation} />
-
                 <div className={classes.posts}>{renderPosts()}</div>
             </div>
 
