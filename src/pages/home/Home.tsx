@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppShell, Group } from '@mantine/core';
+import { AppShell, Group, Skeleton } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import {
     fetchPostsAsync,
@@ -31,7 +31,7 @@ export const Home = () => {
         let content;
         switch (postStatus) {
             case 'loading':
-                content = <>Loading...</>;
+                content = <Skeleton h={350} w={250} mt="sm" animate={true} />;
                 break;
             case 'succeeded':
                 content = <PostList posts={posts} />;
@@ -50,20 +50,19 @@ export const Home = () => {
         <AppShell
             header={{ height: 60 }}
             navbar={{
-                width: 300,
+                width: 150,
                 breakpoint: 'sm',
                 collapsed: { mobile: !opened },
             }}
             footer={{ height: 60 }}
             padding="md"
+            withBorder={false}
         >
             <AppShell.Header>
-                <Group h="100%" px="md">
-                    <Header />
-                </Group>
+                <Header />
             </AppShell.Header>
 
-            <AppShell.Navbar p="md">
+            <AppShell.Navbar>
                 <NavigationPane className={classes.navigation} />
             </AppShell.Navbar>
 
