@@ -1,4 +1,4 @@
-import { Post } from '../../app/types.ts';
+import { Post } from '../types/post.ts';
 
 const DEV_URL = 'https://67423f7be464749900902939.mockapi.io';
 // const LIVE_URL = "https://dogdaycoder.dev";

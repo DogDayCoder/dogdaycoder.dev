@@ -6,7 +6,7 @@ import {
 } from '../../features/posts/slice/postsSlice.ts';
 import { AppDispatch, RootState } from '../../app/store.ts';
 import { NavigationPane } from '../../shared/components/navigationPane/NavigationPane.tsx';
-import { PostArticle } from '../../features/posts/components/PostArticle.tsx';
+import { PostList } from '../../features/posts/components/PostList.tsx';
 import classes from './Home.module.css';
 
 export const Home = () => {
@@ -23,21 +23,26 @@ export const Home = () => {
 
     const renderPosts = () => {
         let content;
-        if (postStatus === 'loading') {
-            content = <div>Loading...</div>;
-        } else if (postStatus === 'succeeded') {
-            content = posts?.map((post) => (
-                <PostArticle key={post.id} article={post} />
-            ));
-        } else if (postStatus === 'failed') {
-            content = <div>{error}</div>;
+        switch (postStatus) {
+            case 'loading':
+                content = <>Loading...</>;
+                break;
+            case 'succeeded':
+                content = <PostList posts={posts} />;
+                break;
+            case 'failed':
+                content = <>{error}</>;
+                break;
+            case 'idle':
+            default:
+                break;
         }
 
-        return <div>{content}</div>;
+        return <>{content}</>;
     };
 
     return (
-        <div>
+        <>
             <h1>DogDayCoder | work-in-progress</h1>
 
             <div className={classes.container}>
@@ -45,6 +50,6 @@ export const Home = () => {
 
                 <div className={classes.posts}>{renderPosts()}</div>
             </div>
-        </div>
+        </>
     );
 };

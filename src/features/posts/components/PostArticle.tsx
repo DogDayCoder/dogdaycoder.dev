@@ -9,7 +9,7 @@ import {
     useMantineTheme,
 } from '@mantine/core';
 import classes from './PostArticle.module.css';
-import { Post } from '../../../app/types.ts';
+import { Post } from '../types/post.ts';
 
 export interface PostArticleProps {
     key: string;
