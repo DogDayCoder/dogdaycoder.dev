@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { AppShell, Group } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import {
     fetchPostsAsync,
     selectAllPosts,
@@ -8,11 +10,13 @@ import { AppDispatch, RootState } from '../../app/store.ts';
 import { NavigationPane } from '../../shared/components/navigationPane/NavigationPane.tsx';
 import { PostList } from '../../features/posts/components/PostList.tsx';
 import { Footer } from '../../shared/components/footer/Footer.tsx';
-import classes from './Home.module.css';
 import { Header } from '../../shared/components/header/Header.tsx';
+import classes from './Home.module.css';
 
 export const Home = () => {
     const dispatch = useDispatch<AppDispatch>();
+    const [opened] = useDisclosure();
+
     const posts = useSelector(selectAllPosts);
     const postStatus = useSelector((state: RootState) => state.posts.status);
     const error = useSelector((state: RootState) => state.posts.error);
@@ -43,15 +47,33 @@ export const Home = () => {
     };
 
     return (
-        <>
-            <Header />
+        <AppShell
+            header={{ height: 60 }}
+            navbar={{
+                width: 300,
+                breakpoint: 'sm',
+                collapsed: { mobile: !opened },
+            }}
+            footer={{ height: 60 }}
+            padding="md"
+        >
+            <AppShell.Header>
+                <Group h="100%" px="md">
+                    <Header />
+                </Group>
+            </AppShell.Header>
 
-            <div className={classes.container}>
+            <AppShell.Navbar p="md">
                 <NavigationPane className={classes.navigation} />
-                <div className={classes.posts}>{renderPosts()}</div>
-            </div>
+            </AppShell.Navbar>
 
-            <Footer />
-        </>
+            <AppShell.Main>
+                <div className={classes.posts}>{renderPosts()}</div>
+            </AppShell.Main>
+
+            <AppShell.Footer>
+                <Footer />
+            </AppShell.Footer>
+        </AppShell>
     );
 };
