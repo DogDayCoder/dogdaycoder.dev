@@ -20,7 +20,12 @@ export const Header = () => {
         <header className={classes.header}>
             <div className={classes.inner}>
                 <Group>
-                    <Image src={Logo} alt="DogDayCoder" height={28} />
+                    <Image
+                        src={Logo}
+                        alt="DogDayCoder"
+                        height={28}
+                        width={28}
+                    />
                 </Group>
 
                 <Group>
