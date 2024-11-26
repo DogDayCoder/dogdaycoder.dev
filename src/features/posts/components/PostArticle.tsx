@@ -1,4 +1,4 @@
-import { IconBookmark, IconHeart, IconShare } from '@tabler/icons-react';
+import { IconCopy, IconHeart } from '@tabler/icons-react';
 import {
     ActionIcon,
     Badge,
@@ -15,12 +15,11 @@ export interface PostArticleProps {
     key: string;
     article: Post;
     liked?: () => void;
-    shared?: () => void;
-    bookmarked?: () => void;
+    copied?: () => void;
 }
 
 export const PostArticle = (props: PostArticleProps) => {
-    const { article, liked, shared, bookmarked } = props;
+    const { article, liked, copied } = props;
     const theme = useMantineTheme();
 
     return (
@@ -69,20 +68,9 @@ export const PostArticle = (props: PostArticleProps) => {
                         <ActionIcon
                             variant="subtle"
                             color="gray"
-                            onClick={bookmarked}
+                            onClick={copied}
                         >
-                            <IconBookmark
-                                size={20}
-                                color={theme.colors.yellow[6]}
-                                stroke={1.5}
-                            />
-                        </ActionIcon>
-                        <ActionIcon
-                            variant="subtle"
-                            color="gray"
-                            onClick={shared}
-                        >
-                            <IconShare
+                            <IconCopy
                                 size={20}
                                 color={theme.colors.blue[6]}
                                 stroke={1.5}
