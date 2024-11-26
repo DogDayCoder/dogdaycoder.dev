@@ -1,18 +1,17 @@
-import { IconBrandYoutube } from '@tabler/icons-react';
+import { IconBrandGithub, IconBrandYoutube } from '@tabler/icons-react';
 import {
     ActionIcon,
     Button,
     Group,
     SimpleGrid,
-    Text,
     Textarea,
     TextInput,
     Title,
 } from '@mantine/core';
-import { ContactIconsList } from './ContactIcons';
+// import { ContactIconsList } from './ContactIcons';
 import classes from './Contact.module.css';
 
-const social = [IconBrandYoutube];
+const social = [IconBrandGithub, IconBrandYoutube];
 
 export const Contact = () => {
     const renderIcons = () =>
@@ -31,13 +30,9 @@ export const Contact = () => {
         <div className={classes.wrapper}>
             <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={50}>
                 <div>
-                    <Title className={classes.title}>Contact us</Title>
-                    <Text className={classes.description} mt="sm" mb={30}>
-                        Leave your email and we will get back to you within 24
-                        hours
-                    </Text>
+                    <Title className={classes.title}>Contact</Title>
 
-                    <ContactIconsList />
+                    {/*<ContactIconsList />*/}
 
                     <Group mt="xl">{renderIcons()}</Group>
                 </div>

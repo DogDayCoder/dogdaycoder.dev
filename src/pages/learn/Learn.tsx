@@ -1,5 +1,3 @@
 export const Learn = () => {
-    return (
-        <></>
-    );
+    return <>Learn</>;
 };
