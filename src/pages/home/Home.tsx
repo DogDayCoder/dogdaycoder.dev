@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppShell, Group, Skeleton } from '@mantine/core';
+import { AppShell, Skeleton } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import {
     fetchPostsAsync,
