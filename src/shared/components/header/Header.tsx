@@ -20,12 +20,14 @@ export const Header = () => {
         <header className={classes.header}>
             <div className={classes.inner}>
                 <Group>
-                    <Image
-                        src={Logo}
-                        alt="DogDayCoder"
-                        height={28}
-                        width={28}
-                    />
+                    <a href={'./'}>
+                        <Image
+                            src={Logo}
+                            alt="DogDayCoder"
+                            height={28}
+                            width={28}
+                        />
+                    </a>
                 </Group>
 
                 <Group>
