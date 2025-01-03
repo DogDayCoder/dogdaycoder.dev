@@ -6,7 +6,7 @@ import {
     selectAllPosts,
 } from '../../features/posts/slice/postsSlice.ts';
 import { AppDispatch, RootState } from '../../app/store.ts';
-import { PostList } from '../../features/posts/components/PostList.tsx';
+import { PostsGrid } from '../../features/posts/components/postsGrid/PostsGrid.tsx';
 import classes from './Home.module.css';
 
 export const Home = () => {
@@ -22,14 +22,14 @@ export const Home = () => {
         }
     }, [postStatus, dispatch]);
 
-    const renderPosts = () => {
+    const renderContent = () => {
         let content;
         switch (postStatus) {
             case 'loading':
                 content = <Skeleton h={350} w={250} mt="sm" animate={true} />;
                 break;
             case 'succeeded':
-                content = <PostList posts={posts} />;
+                content = <PostsGrid posts={posts} />;
                 break;
             case 'failed':
                 content = <>{error}</>;
@@ -41,9 +41,5 @@ export const Home = () => {
         return <>{content}</>;
     };
 
-    return (
-        <div>
-            <div className={classes.posts}>{renderPosts()}</div>
-        </div>
-    );
+    return <div className={classes.posts}>{renderContent()}</div>;
 };

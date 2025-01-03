@@ -9,7 +9,7 @@ import {
     useMantineTheme,
 } from '@mantine/core';
 import classes from './PostArticle.module.css';
-import { Post } from '../types/post.ts';
+import { Post } from '../../types/post.ts';
 
 export interface PostArticleProps {
     key: string;
@@ -32,11 +32,19 @@ export const PostArticle = (props: PostArticleProps) => {
                 />
             </Card.Section>
 
-            <Badge w="fit-content" variant="light">
-                decorations
-            </Badge>
+            <Group gap="xs" justify="center">
+                <Badge variant="light" color="grape">
+                    React
+                </Badge>
+                <Badge variant="light" color="lime">
+                    Android
+                </Badge>
+                <Badge variant="light" color="cyan">
+                    Mobile
+                </Badge>
+            </Group>
 
-            <Text fw={700} className={classes.title} mt="xs">
+            <Text className={classes.title} mt="xs">
                 {article.title}
             </Text>
 

@@ -16,7 +16,7 @@ export const App = () => {
 
     return (
         <BrowserRouter>
-            <MantineProvider>
+            <MantineProvider defaultColorScheme="dark">
                 <AppShell
                     header={{ height: 60 }}
                     navbar={{

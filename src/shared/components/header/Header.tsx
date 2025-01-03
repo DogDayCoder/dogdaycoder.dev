@@ -1,6 +1,6 @@
 import { IconSearch } from '@tabler/icons-react';
-import { Autocomplete, Group, Image } from '@mantine/core';
-import Logo from '../../../assets/logo.svg';
+import { Autocomplete, Avatar, Group } from '@mantine/core';
+import Logo from '../../../assets/logo_sm.png';
 import classes from './Header.module.css';
 
 const links = [
@@ -21,12 +21,7 @@ export const Header = () => {
             <div className={classes.inner}>
                 <Group>
                     <a href={'./'}>
-                        <Image
-                            src={Logo}
-                            alt="DogDayCoder"
-                            height={28}
-                            width={28}
-                        />
+                        <Avatar src={Logo} alt="DogDayCoder" radius="xl" />
                     </a>
                 </Group>
 
@@ -49,7 +44,7 @@ export const Header = () => {
 
                     <Group
                         ml={50}
-                        gap={5}
+                        gap={10}
                         className={classes.links}
                         visibleFrom="sm"
                     >
