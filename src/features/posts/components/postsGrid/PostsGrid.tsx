@@ -3,6 +3,7 @@ import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
 import { Post } from '../../types/post.ts';
 import { PostArticle } from '../postArticle/PostArticle.tsx';
+import classes from './PostsGrid.module.css';
 
 export interface PostListProps {
     posts: Post[] | undefined;
@@ -15,22 +16,9 @@ export const PostsGrid = (props: PostListProps) => {
 
     const renderSlides = () => {
         return posts?.map((post) => (
-            <Carousel.Slide key={post.title}>
-                <PostArticle key={post.id} article={post} />
-            </Carousel.Slide>
+            <PostArticle key={post.id} article={post} />
         ));
     };
 
-    return (
-        <Carousel
-            slideSize={{ base: '100%', sm: '50%' }}
-            slideGap={{ base: 2, sm: 'xl' }}
-            align="start"
-            withIndicators
-            loop
-            slidesToScroll={mobile ? 1 : 2}
-        >
-            {renderSlides()}
-        </Carousel>
-    );
+    return <>{renderSlides()}</>;
 };

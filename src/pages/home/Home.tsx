@@ -38,7 +38,7 @@ export const Home = () => {
                 break;
         }
 
-        return <>{content}</>;
+        return content;
     };
 
     return <div className={classes.posts}>{renderContent()}</div>;

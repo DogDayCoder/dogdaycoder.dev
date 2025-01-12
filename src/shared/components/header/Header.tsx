@@ -23,6 +23,7 @@ export const Header = () => {
                     <a href={'./'}>
                         <Avatar src={Logo} alt="DogDayCoder" radius="xl" />
                     </a>
+                    (work-in-progress)
                 </Group>
 
                 <Group>
